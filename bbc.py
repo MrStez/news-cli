@@ -12,7 +12,7 @@ import pandas as pd
 baseurl = "https://www.bbc.co.uk"
 scrape_url = "https://www.bbc.co.uk/news"
 x = 1
-stories = []
+stories = ['null']
 
 def get_headlines():
 	global x
