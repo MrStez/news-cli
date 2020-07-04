@@ -6,6 +6,8 @@ import requests
 from bs4 import BeautifulSoup
 from termcolor import colored, cprint
 import pandas as pd
+import sys
+
 #from getarticle import get_article_text
 
 #vars
@@ -56,13 +58,17 @@ def get_article_text(partial_url):
         i+=1
 
 def main():
-	global x 
+	global x
+	x = 1 
 	get_headlines()
-	#stories.to_csv('stories.csv')
-	article_id = input("select an article id [x]")
-	partial_url = stories[int(article_id)]
-	get_article_text(partial_url)
+	article_id = input("select an article id or Q to quit\n")
+	if article_id != 'q' or 'Q':
+		partial_url = stories[int(article_id)]
+		get_article_text(partial_url)
+	else:
+		sys.exit()
 
-main()
+while __name__ == "__main__":
+	main()
 	
 	
