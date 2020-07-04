@@ -46,11 +46,6 @@ cprint(f"({baseurl}{headlineouter['href']})", 'blue', end='\n')
 
 
 articles = soup.find_all('a',class_="gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor")
-
-
-# In[74]:
-
-
 i = 0
 links_to_fetch = 10
 while i < links_to_fetch:
@@ -59,30 +54,4 @@ while i < links_to_fetch:
     cprint(f"{articleheadline}:", 'red', attrs=['bold'],end='')
     cprint(f"({baseurl}{articleurl})", 'blue', end='\n')
     i+=1
-    
-    
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
