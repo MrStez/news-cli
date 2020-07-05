@@ -1,16 +1,12 @@
 # news-cli
- A news scraper script.
+ A simple bbc news scraper script.
  
- pulls top headlines from bbc news
+ pulls top headlines from bbc news.
+ 
+ once headlines loaded, select an article ID to read article.
+ 
+ press Q to quit once finished!
  
  dependencies:
- bs4, requests
- 
- 
- todo: 
- 
- fix sys.quit[ ]
- 
- 
- 
+ bs4, requests, termcolor
  
