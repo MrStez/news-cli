@@ -62,11 +62,14 @@ def main():
 	x = 1 
 	get_headlines()
 	article_id = input("select an article id or Q to quit\n")
-	if article_id != 'q' or 'Q':
+
+	if article_id == 'Q' or article_id == 'q':
+		cprint("Goodbye!", 'red', end='\n')
+		sys.exit()
+	
+	else:
 		partial_url = stories[int(article_id)]
 		get_article_text(partial_url)
-	else:
-		sys.exit()
 
 while __name__ == "__main__":
 	main()
