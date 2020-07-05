@@ -5,7 +5,6 @@
 import requests
 from bs4 import BeautifulSoup
 from termcolor import colored, cprint
-import pandas as pd
 import sys
 
 #from getarticle import get_article_text
