@@ -10,3 +10,6 @@
  dependencies:
  bs4, requests, termcolor
  
+ TODO:
+ 
+ [ ] Fix issue with articles appearing twice.
