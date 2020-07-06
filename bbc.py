@@ -43,17 +43,19 @@ def get_headlines():
 		i+=1
 
 def get_article_text(partial_url):
-    global baseurl
-    complete_url = baseurl + partial_url
-    response = requests.get(complete_url)
-    soup = BeautifulSoup(response.text, "html.parser")
-    story = soup.find_all('p')
+	global baseurl
+	complete_url = baseurl + partial_url
+	response = requests.get(complete_url)
+	soup = BeautifulSoup(response.text, "html.parser")
+	story = soup.find_all('p')
 	#i is set to 12 to ignore all the pre-amble / social media ads.
 	#range is -4 to remove unnecessary text
-    i = 12
-    while i < (len(story)-4):
-        print(story[i].text)
-        i+=1
+	i = 12
+	while i < (len(story)-4):
+		print(story[i].text)
+		i+=1
+	cprint("Press any key to return to Main Menu", 'red', attrs=['bold'], end='\n')
+	input()
 
 def main():
 	global x
