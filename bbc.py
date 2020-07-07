@@ -16,35 +16,23 @@ def get_soup(url):
 	return soup
 
 def get_headlines(item_start_id, links_to_fetch):
+	scrape_url = "http://feeds.bbci.co.uk/news/rss.xml"
 	current_item = item_start_id
 	#request and parse html
 	soup = get_soup(scrape_url)
-
-	#main headline variables
-	headline_outer = soup.find('a', class_ = "gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-paragon-bold nw-o-link-split__anchor")
-	headline_inner = headline_outer.find('h3')
-	headline_url = headline_outer['href']
-	stories.append(headline_url)
-	#print the main headline and accompanying url
-	cprint(f"[{current_item}]{headline_inner.text}", 'red', attrs=['bold'], end='\n')
-	current_item+=1
-	
 	#isolate the rest of the headlines (articles)
-	articles = soup.find_all('a',class_="gs-c-promo-heading gs-o-faux-block-link__overlay-link gel-pica-bold nw-o-link-split__anchor")
-
+	articles = soup.find_all('item')
 	#extract headlines and url from links on main page & print
 	for item in range(links_to_fetch):
-		articleurl = articles[item].get('href')
-		articleheadline = articles[item].h3.text
+		articleurl = articles[item].guid.text
+		articleheadline = articles[item].title.text
 		stories.append(articleurl)
 		cprint(f"[{current_item}]{articleheadline}:", 'red', attrs=['bold'],end='\n')
 		current_item+=1
 
 #partial url example ( /news/1072279 ) 
-def get_article_text(partial_url):
-	baseurl = "https://www.bbc.co.uk"
-	complete_url = baseurl + partial_url
-	soup = get_soup(complete_url)
+def get_article_text(article_url):
+	soup = get_soup(article_url)
 	story = soup.find_all('p')
 	#range_start is set to 12 to ignore all the pre-amble / social media ads.
 	range_start = 12
@@ -65,8 +53,8 @@ def main():
 		sys.exit()
 	
 	else:
-		partial_url = stories[int(article_id)]
-		get_article_text(partial_url)
+		article_url = stories[int(article_id)]
+		get_article_text(article_url)
 
 while __name__ == "__main__":
 	main()

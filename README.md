@@ -6,10 +6,12 @@
  once headlines loaded, select an article ID to read article.
  
  press Q to quit once finished!
+
+
  
  dependencies:
  bs4, requests, termcolor
  
  TODO:
  
- [ ] Fix issue with articles appearing twice.
+ [x] Fix issue with articles appearing twice.
